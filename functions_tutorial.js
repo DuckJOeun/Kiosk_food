@@ -195,18 +195,17 @@ function prevBtn() {
 /* 결제화면 - 카드결제 버튼 */
 function cardBtn() {
     document.querySelector("#카드결제창").style.display = 'grid';
-    // document.querySelector("#결제화면").style.filter = 'blur(2px)';
-    document.querySelector("#결제화면").classList.add('overlay');
     
     document.getElementById("결제화면").style.pointerEvents = 'none';
+    document.getElementById("결제overlay").style.display = 'block';
 }
 
 
 /* 카드결제창 - 취소 버튼 */
 function cancleBtn() {
     document.querySelector("#결제화면").style.display = 'grid';
-    // document.querySelector("#결제화면").style.filter = 'none';
-    document.querySelector("#결제화면").classList.remove('overlay');
+    document.getElementById("결제overlay").style.display = 'none';
+
     document.querySelector("#카드결제창").style.display = 'none';
     document.getElementById("결제화면").style.pointerEvents = 'auto';
 }

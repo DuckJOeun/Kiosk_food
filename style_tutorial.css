@@ -356,23 +356,35 @@ body {
 
 /* 결제화면 - 주문 세부내역*/
 #결제화면 {
+    position:relative;
     width:100%;
     height: 100%;
     
     display:grid;
     grid-template-rows:max-content max-content 6fr 1fr 2fr 1fr;
 }
-.overlay::before {
+/* .overlay::before {
     content: "";
     position: absolute;
     top: 0%;
     left: 2%;
     right: 2%;
     bottom: 25%;
-    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black */
+    background-color: rgba(0, 0, 0, 0.7); 
     border-radius: 20px;
     
-    pointer-events: none; /* Ensure the overlay doesn't block interactions */
+    pointer-events: none; 
+} */
+#결제overlay {
+    content : "";
+    position:absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    pointer-events: none; 
+
+    background-color:rgba(0, 0, 0, 0.7); 
 }
 #결제화면 .check_str {
     padding: 1%;
