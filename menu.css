@@ -1,0 +1,61 @@
+/* 메인메뉴 */
+#메인메뉴 #순대국밥 {
+    background: url(img/menu/순대국밥.png) no-repeat center / cover;
+}
+#얼큰순대국밥 {
+    background: url(img/menu/얼큰순대국밥.png) no-repeat center / cover;
+}
+#돼지국밥 {
+    background: url(img/menu/돼지국밥.png) no-repeat center / cover;
+}
+#뼈해장국 {
+    background: url(img/menu/뼈해장국.png) no-repeat center / cover;
+}
+#부대찌개 {
+    background: url(img/menu/부대찌개.png) no-repeat center / cover;
+}   
+#보쌈_중 {
+    background: url(img/menu/보쌈.png) no-repeat center / cover;
+}
+#보쌈_대 {
+    background: url(img/menu/보쌈.png) no-repeat center / cover;
+}
+
+/* 계절메뉴 */
+#콩국수 {
+    background: url(img/menu/콩국수.png) no-repeat center / cover;
+}
+#물냉면 {
+    background: url(img/menu/물냉면.png) no-repeat center / cover;
+}
+#비빔냉면 {
+    background: url(img/menu/비빔냉면.png) no-repeat center / cover;
+}
+#막국수 {
+    background: url(img/menu/막국수.png) no-repeat center / cover;
+}
+#삼계탕 {
+    background: url(img/menu/삼계탕.png) no-repeat center / cover;
+}
+
+/* 추가메뉴 */
+#계란말이 {
+    background: url(img/menu/계란말이.png) no-repeat center / cover;
+}
+#모듬만두 {
+    background: url(img/menu/모듬만두.png) no-repeat center / cover;
+}   
+#똥집튀김 {
+    background: url(img/menu/똥집튀김.png) no-repeat center / cover;
+}
+
+/* 음료 */
+#콜라 {
+    background: url(img/menu/콜라.png) no-repeat center / cover;
+}
+#사이다 {
+    background: url(img/menu/사이다.png) no-repeat center / cover;
+}
+#환타 {
+    background: url(img/menu/환타.png) no-repeat center / cover;
+}
