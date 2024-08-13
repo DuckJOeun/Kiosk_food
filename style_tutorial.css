@@ -13,20 +13,21 @@ body {
 
     -ms-overflow-style: none;
     scrollbar-width: none;
+
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 #screen {
     width: 95%;
     display:block;
     overflow-y:scroll;
-    height: 93%;
+    height: 96%;
     
-    border: 1vw solid black;
+    border: 3px solid black;
     border-radius:20px;
-    margin-top:5%;
-    margin-bottom: auto;
-    margin-left: auto;
-    margin-right: auto;
     
     background-color: rgb(173, 42, 42);
 
@@ -34,9 +35,61 @@ body {
     scrollbar-width: none; /* 파이어폭스 */
 }
 
+#screen_instruction {
+    height: 20%;
+    width: 100%;
+    display:flex;
+    align-items: center;
+
+    padding: 3% 0 3% 0;
+    background-color: white;
+}
+#inst_character {
+    width: 25%;
+    margin: 0 2% 0 2%;
+    aspect-ratio: 1/1;
+    background: url(img/마스코트.png) no-repeat center/cover; 
+}
+#instruction {
+    flex:1;
+
+    height: 100%;
+    
+    display:flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 0 2% 0 2%;
+
+    font-size: large;
+    font-weight: bold;
+
+    word-wrap: break-word;
+    word-break: break-all;
+
+    overflow:scroll;
+}
+
+#다음지시 {
+    display:block;
+    position:fixed;
+
+    bottom: 2%;
+    right: 5%;
+
+    z-index: 1000;
+    
+    padding: 10px;
+    font-size: large;
+    font-weight: bold;
+
+    background-color: rgba(173, 42, 42, 0.813);
+    border-color: aliceblue;
+    border-radius: 10px;
+}
+
 .title {
     text-align: center;
-    margin-top: 2vh;
 
     color:antiquewhite;
 }
@@ -55,7 +108,7 @@ body {
     height: 100%;
     justify-content:center; 
     
-    background-color:rgb(141, 66, 52);
+    background-color:rgb(141, 65, 52);
     border-radius: 0 0 20px 20px;
 }
 #메인화면 .button-container {    
@@ -94,14 +147,13 @@ body {
 /* 주문 화면 - 상단바 */
 #주문화면 {
     width:100%;
-    height: 95vh;
+    height: 100%;
 
     display:grid;
-    grid-template-rows: min-content min-content max-content max-content;
+    grid-template-rows: min-content min-content 3fr 2fr;
 }
 #주문화면 .top_bar {
-    /* width:100%; */
-    aspect-ratio: 7/1;
+    aspect-ratio: 8/1;
 
     display:grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -122,15 +174,10 @@ body {
 }
 /* 주문 화면 - 메뉴판 */
 #주문화면 .menu_screen {
-    /* width:100%; */
-    height: 44vh;
-    /* aspect-ratio: 1/1; */
-
     overflow: auto;
 
     background-color:rgb(224, 224, 224);    
     border: 1px solid white;
-
 }
 #주문화면 #메인메뉴, #계절메뉴, #추가메뉴, #음료 {
     width:100%;
@@ -156,7 +203,7 @@ body {
 #주문화면 .menu_screen .menu_name {
     text-align: center;
     font-weight: bold;
-    font-size: large;
+    font-size: medium;
 
     background-color: white;
 }
@@ -170,7 +217,7 @@ body {
 #주문화면 .bottom_screen {
     width:100%;
     /* height:100%; */
-    height: 33vh;    
+    /* height: 33vh;     */
 
     display:grid;
     grid-template-columns: 4fr 3fr;
@@ -301,8 +348,7 @@ body {
     font-weight:bolder;
     border-radius:15px;
     border-color: rgb(215, 204, 188);
-    /* color:brown; */
-    /* background-color:rgb(186, 186, 186); */
+
     background-color:rgb(252, 222, 176);
 }
 
@@ -310,7 +356,6 @@ body {
 #결제화면 {
     width:100%;
     height: 100%;
-
     
     display:grid;
     grid-template-rows:max-content max-content 6fr 1fr 2fr 1fr;
@@ -321,7 +366,7 @@ body {
     top: 2%;
     left: 2%;
     right: 2%;
-    bottom: 3%;
+    bottom: 2%;
     background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black */
     border-radius: 20px;
     
@@ -341,21 +386,17 @@ body {
 #결제화면 .cartOrder {
     display:grid;
     grid-template-columns: 2fr 1fr 1fr;
-    /* justify-content: space-between; */
+
     align-items: center;
 
     padding-left: 1%;
     padding-right: 1%;
-
-    /* border-bottom: 1px solid gray; */
-    /* background-color: rgb(253, 245, 245); */
 }
 #결제화면 [id ^= "o_name"] {
     font-size: large;
     font-weight: bold;
 }
 #결제화면 [id ^= "o_pcs"] {
-    /* width:30%; */
     text-align: right;
 }
 #결제화면 [id ^= "o_price"] {
@@ -405,9 +446,9 @@ body {
 /* 카드결제창 */
 #카드결제창 {
     margin-top: 30%;
-    margin-left: 10%;
+
     position:absolute;
-    width:80%;
+    width:70%;
     height: 60%;
     top: 0;
 
@@ -415,11 +456,9 @@ body {
     border: 3px solid rgb(210, 168, 97);
 
     display: grid;
-    grid-template-rows: 1fr 2fr 1fr 2fr;
+    grid-template-rows: 2fr auto auto 3fr;
     
     overflow-y:scroll;
-    -ms-overflow-style: none; /* 인터넷 익스플로러 */
-    scrollbar-width: none; /* 파이어폭스 */
 }
 #카드결제창 .msg_1 {
     font-size: x-large;
@@ -434,6 +473,9 @@ body {
     font-size: large;
     font-weight: bolder;
 
+    margin-top: 5%;
+    margin-bottom: 5%;
+
     text-align: center;
 }
 
@@ -445,10 +487,10 @@ body {
     background: url(img/card.jpg) no-repeat center / cover;
 }
 #카드결제창 .buttons {
+    height: 60%;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    padding-bottom: 5%;
 }
 #카드결제창 .card_btn {
     font-weight: bold;
@@ -456,7 +498,7 @@ body {
 
     width: 30%;
     height:max-content;
-    padding: 20px;
+    padding: 10px;
 
     border-radius: 10%;
     border-color:rgb(189, 166, 126);
