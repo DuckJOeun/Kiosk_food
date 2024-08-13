@@ -63,7 +63,7 @@ function menuBtn(id, price) {
             break;
         }
     }
-    if ((orderList.length < 5) && (i == orderList.length)) {
+    if ((orderList.length < 3) && (i == orderList.length)) {
         // 장바구니에 새로 추가하는 메뉴일 경우
         // 장바구니에 해당 메뉴를 1개 담기
         var order = new Item(id, price);
