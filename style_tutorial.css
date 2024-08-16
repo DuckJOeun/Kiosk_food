@@ -363,18 +363,6 @@ body {
     display:grid;
     grid-template-rows:max-content max-content 6fr 1fr 2fr 1fr;
 }
-/* .overlay::before {
-    content: "";
-    position: absolute;
-    top: 0%;
-    left: 2%;
-    right: 2%;
-    bottom: 25%;
-    background-color: rgba(0, 0, 0, 0.7); 
-    border-radius: 20px;
-    
-    pointer-events: none; 
-} */
 #결제overlay {
     content : "";
     position:absolute;
@@ -547,8 +535,7 @@ body {
 
     margin-left: 20%;
 
-    background: url(img/마스코트.png) no-repeat center / cover;
-    
+    background: url(img/마스코트.png) no-repeat center / cover;  
 }
 #완료화면 .msg {
     text-align: center;
