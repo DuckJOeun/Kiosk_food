@@ -19,6 +19,25 @@
 5. 완료화면
 */
 
+/* 지시문 관련 변수 */
+var audio = new Audio('voice/_.mp3');
+audio.loop = false;
+audio.autoplay = true;
+audio.volume = 1.0;
+
+let instruction = [
+    "안녕하세요<br>만나서 반가워요<br><br>지금부터 저와<br>키오스크로 음식 주문하는 방법을 배워봐요",
+]
+let inst_idx = 0;
+/* 지시문 다음 버튼 */
+function instBtn() {
+    inst_write(instruction[inst_idx]);
+    inst_idx += 1;
+} 
+
+function inst_write(string) {
+    document.getElementById("instruction").innerHTML = string;
+}
 /* 메인화면 버튼 클릭 */
 function mainBtn(value) {
     document.querySelector("#메인화면").style.display = 'none';
