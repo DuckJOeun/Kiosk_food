@@ -36,13 +36,16 @@ body {
 }
 
 #screen_instruction {
-    height: 30vh;
+    height: 35vh;
     width: 100%;
     display:flex;
     align-items: center;
 
     padding: 1% 0 2% 0;
     background-color: white;
+
+    box-sizing: border-box;
+    overflow: hidden;
 }
 #inst_character {
     width: 25%;
@@ -52,12 +55,11 @@ body {
 }
 #instruction {
     flex:1;
-
-    height: 100%;
     
     display:flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
 
     padding: 0 2% 0 2%;
 
@@ -67,7 +69,9 @@ body {
     word-wrap: break-word;
     word-break: break-all;
 
-    overflow:scroll;
+    box-sizing: border-box;
+    overflow-y: auto;
+    max-height: 97%;
 }
 
 #다음지시 {
@@ -227,6 +231,8 @@ body {
     border-radius: 0 0 20px 20px;
 
     background-color: rgb(233, 232, 230);
+
+    overflow-y: auto;
 }
 #주문화면 .cart {
     height: 98%;
@@ -322,6 +328,7 @@ body {
     grid-template-rows: 1fr 1fr;
     
     padding: 2%;
+    overflow-y:hidden;
 }
 #주문화면 .payment_top { /* 주문 금액 */
     display:flex;
@@ -381,7 +388,7 @@ body {
 }
 #결제화면 .payment_cart {
     display:grid;
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 2fr;
+    grid-template-rows: 1fr 1fr 1fr 2fr;
 
     background-color: rgb(253, 245, 245);
 }
