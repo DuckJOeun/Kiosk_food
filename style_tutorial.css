@@ -1,8 +1,8 @@
 html {
     width: 100vw;
     height: 100vh;
-    -ms-overflow-style: none;
-    scrollbar-width: none; 
+    /* -ms-overflow-style: none;
+    scrollbar-width: none;  */
 }
 
 body {
