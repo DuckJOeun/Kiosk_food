@@ -172,6 +172,8 @@ body {
     border-radius: 0 0 20px 20px;
 
     background-color: rgb(233, 232, 230);
+
+    overflow: auto;
 }
 #주문화면 .cart {
     height: 98%;
@@ -183,7 +185,7 @@ body {
 
     padding-top:1%;
     padding-bottom: 1%;
-    overflow-y: auto;
+    overflow: auto;
 }
 #주문화면 .cart > *:not(:last-child) {
     border-bottom: 1px solid gray;
@@ -267,6 +269,7 @@ body {
     grid-template-rows: 1fr 1fr;
     
     padding: 2%;
+    overflow: hidden;
 }
 #주문화면 .payment_top { /* 주문 금액 */
     display:flex;
