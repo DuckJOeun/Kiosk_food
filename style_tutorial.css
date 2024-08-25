@@ -501,9 +501,9 @@ body {
 }
 
 #카드결제창 .img {
-    width:80%;
-    padding-left: 10%;
-    padding-right: 10%;
+    width:70%;
+    padding-left: 15%;
+    padding-right: 15%;
     aspect-ratio: 1/1;
     background: url(img/card.jpg) no-repeat center / cover;
 }
@@ -515,7 +515,7 @@ body {
 }
 #카드결제창 .card_btn {
     font-weight: bold;
-    font-size: x-large;
+    font-size: 20px;
 
     width: 30%;
     height:max-content;

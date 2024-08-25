@@ -20,9 +20,9 @@
 */
 
 /* 지시문 관련 변수 */
-var audio = new Audio('voice/_.mp3');
+var audio = new Audio('voice/v_0.mp3');
 audio.loop = false;
-audio.autoplay = true;
+audio.autoplay = false;
 audio.volume = 1.0;
 
 let instruction = [
@@ -32,20 +32,236 @@ let instruction = [
     "오늘은 매장에서 식사하려고 해요<br><br>[매장에서 식사] 버튼을<br>눌러 주세요",
     "음식 종류를 고르고<br>메뉴를 선택할 수 있는<br><br>[주문 화면] 이에요",
     "메뉴가 다 보이지 않을 때는<br>손가락을 이용해서<br>메뉴판을 위아래로 쓸어내리면 된답니다",
-    "먼저 어떤 음식들이 있는지 확인해볼까요?",
-    "키오스크 위쪽의<br>[메인메뉴], [계절메뉴], [추가메뉴], [음료] 버튼을<br>한 번씩 눌러 보세요",
+    "먼저 어떤 음식들이 있는지<br>확인해볼까요?",
+    "키오스크 위쪽의<br>[메인메뉴], [계절메뉴],<br>[추가메뉴], [음료] 버튼을<br>한 번씩 눌러 보세요",
     "이제 음식을 담아봐요<br><br>오늘은<br>순대국밥과 모듬만두를<br>먹으려고 해요",
-    "위쪽의 버튼들을 눌러보며<br>\"순대국밥\"과 \"모듬만두\"를 찾아서<br>장바구니에 담아 주세요",
-    "메뉴를 잘 담았어요<br><br>이제 키오스크 아래쪽의 결제하기 버튼을 눌러 주세요",
+    "위쪽의 버튼들을 눌러보며<br>[순대국밥]과 [모듬만두]를 찾아서<br>장바구니에 담아 주세요",
+    "메뉴를 잘 담았어요<br><br>이제 키오스크 아래쪽의<br>[결제하기] 버튼을<br>눌러 주세요",
     "담은 메뉴들과 총 결제금액을 확인할 수 있는<br><br>[결제 화면] 이에요",
+    "\"카드 결제\" 또는 <br>\"기타 결제\"를<br>선택할 수 있어요",
+    "이 키오스크에서는<br>카드 결제만 가능해요<br><br>[카드 결제] 버튼을<br>눌러 주세요",
+    "카드를 키오스크 아래의<br>투입구에 넣으면<br>결제가 완료돼요",
+    "[완료] 버튼을<br>눌러 주세요",
+    "음식 주문이<br>완료되었어요!<br><br>앞으로는 혼자서도<br>잘 할 수 있을 거예요",
 ]
-let inst_idx = 7;
+let inst_idx = 0;
 /* 지시문 다음 버튼 */
 function instBtn() {
+    if (inst_idx == 1) {
+        document.getElementById("다음지시").style.display = 'none';
+        return step1();
+    }
     inst_write(instruction[inst_idx]);
+    audio.pause();
+    audio.src = "voice/v_" + inst_idx + ".mp3";
+    audio.load();
+    audio.play();
+
     inst_idx += 1;
+    document.getElementById("다음지시").innerText = '다음';
+    
+    console.log("지시문 번호: "+ inst_idx);
 } 
 
+/* 튜토리얼 단계별 */
+function step1() {
+    /* 매장에서 식사 선택 */
+    console.log("step1");
+
+    audio.pause();
+    audio.src = "voice/v_" + inst_idx + ".mp3";
+    audio.load();
+    audio.play();
+
+    inst_write(instruction[inst_idx]);
+    inst_idx += 1;
+
+    audio.addEventListener('ended', function() {
+        audio.src = "voice/v_" + inst_idx + ".mp3";
+        audio.load();
+        audio.play();
+    
+        inst_write(instruction[inst_idx]);
+        inst_idx += 1;
+        
+        audio.addEventListener('ended', function() {
+            audio.src = "voice/v_" + inst_idx + ".mp3";
+            audio.load();
+            audio.play();
+    
+            inst_write(instruction[inst_idx]);
+            inst_idx += 1;
+            
+            audio.addEventListener('ended', function() {
+                document.getElementById('메인화면').style.pointerEvents = 'auto';
+            }, {once : true});
+        }, {once : true});
+    }, {once : true});
+}
+function step2() {
+    document.querySelector("#메인화면").style.display = 'none';
+    document.querySelector("#주문화면").style.display = 'grid';
+    /* 메뉴 종류 버튼 한 번씩 눌러보기 */
+    console.log("step2");
+
+    inst_idx = 4;
+    audio.pause();
+    audio.src = "voice/v_" + inst_idx + ".mp3";
+    audio.load();
+    audio.play();
+
+    inst_write(instruction[inst_idx]);
+    inst_idx += 1;
+
+    audio.addEventListener('ended', function() {
+        audio.src = "voice/v_" + inst_idx + ".mp3";
+        audio.load();
+        audio.play();
+    
+        inst_write(instruction[inst_idx]);
+        inst_idx += 1;
+        
+        audio.addEventListener('ended', function() {
+            audio.src = "voice/v_" + inst_idx + ".mp3";
+            audio.load();
+            audio.play();
+    
+            inst_write(instruction[inst_idx]);
+            inst_idx += 1;
+            
+            audio.addEventListener('ended', function() {
+                audio.src = "voice/v_" + inst_idx + ".mp3";
+                audio.load();
+                audio.play();
+    
+                inst_write(instruction[inst_idx]);
+                inst_idx += 1;
+
+                audio.addEventListener('ended', function() {
+                    document.getElementById('지시부분_단계2').style.border = '3px solid rgb(179, 135, 25)';
+                    document.getElementById('지시부분_단계2').style.pointerEvents = 'auto';
+                }, {once : true});
+            }, {once : true});
+        }, {once : true});
+    }, {once : true});
+}
+function step3() {
+    document.querySelector("#메인화면").style.display = 'none';
+    document.querySelector("#주문화면").style.display = 'grid';
+    /* 메뉴 담기 (순대국밥, 모듬만두) */
+    document.getElementById('지시부분_단계2').style.border = 'none';
+    document.getElementById('지시부분_단계2').style.pointerEvents = 'none';
+
+    inst_idx = 8;
+    audio.pause();
+    audio.src = "voice/v_" + inst_idx + ".mp3";
+    audio.load();
+    audio.play();
+
+    inst_write(instruction[inst_idx]);
+    inst_idx += 1;
+
+    audio.addEventListener('ended', function() {
+        audio.src = "voice/v_" + inst_idx + ".mp3";
+        audio.load();
+        audio.play();
+
+        inst_write(instruction[inst_idx]);
+        inst_idx += 1;
+
+        audio.addEventListener('ended', function() {
+            document.getElementById('지시부분_단계2').style.pointerEvents = 'auto';
+            document.getElementById('지시부분_단계3').style.pointerEvents = 'auto';
+        }, {once : true});
+    }, {once : true});
+}
+function step4() {
+    /* 결제하기 버튼 누르기 */
+    document.getElementById('지시부분_단계2').style.pointerEvents = 'none';
+    document.getElementById('지시부분_단계3').style.pointerEvents = 'none';
+
+    audio.pause();
+    audio.src = "voice/v_" + inst_idx + ".mp3";
+    audio.load();
+    audio.play();
+
+    inst_write(instruction[inst_idx]);
+    inst_idx += 1;
+
+    audio.addEventListener('ended', function() {
+        document.getElementById('지시부분_단계4').style.pointerEvents = 'auto';
+    }, {once : true});
+}
+function step5() {
+    /* 카드결제 버튼 누르기 */
+    document.getElementById('지시부분_단계4').style.pointerEvents = 'none';
+    
+    audio.pause();
+    audio.src = "voice/v_" + inst_idx + ".mp3";
+    audio.load();
+    audio.play();
+
+    inst_write(instruction[inst_idx]);
+    inst_idx += 1;
+
+    audio.addEventListener('ended', function() {
+        audio.src = "voice/v_" + inst_idx + ".mp3";
+        audio.load();
+        audio.play();
+
+        inst_write(instruction[inst_idx]);
+        inst_idx += 1;
+        
+        audio.addEventListener('ended', function() {
+            audio.src = "voice/v_" + inst_idx + ".mp3";
+            audio.load();
+            audio.play();
+
+            inst_write(instruction[inst_idx]);
+            inst_idx += 1;
+
+            audio.addEventListener('ended', function() {
+                document.getElementById('지시부분_단계5').style.pointerEvents = 'auto';
+            }, {once : true});
+        }, {once : true});
+    }, {once : true});
+}
+function step6() {
+    /* 결제 완료 */
+    document.getElementById('지시부분_단계5').style.pointerEvents = 'none';
+
+    audio.pause();
+    audio.src = "voice/v_" + inst_idx + ".mp3";
+    audio.load();
+    audio.play();
+
+    inst_write(instruction[inst_idx]);
+    inst_idx += 1;
+
+    audio.addEventListener('ended', function() {
+        audio.src = "voice/v_" + inst_idx + ".mp3";
+            audio.load();
+            audio.play();
+
+            inst_write(instruction[inst_idx]);
+            inst_idx += 1;
+
+            audio.addEventListener('ended', function() {
+                document.getElementById('지시부분_단계6').style.pointerEvents = 'auto';
+            }, {once : true});
+    }, {once : true});
+}
+function step7() {
+    /* 완료! */
+    document.getElementById('지시부분_단계6').style.pointerEvents = 'none';
+
+    audio.pause();
+    audio.src = "voice/v_" + inst_idx + ".mp3";
+    audio.load();
+    audio.play();
+
+    inst_write(instruction[inst_idx]);
+}
 function inst_write(string) {
     document.getElementById("instruction").innerHTML = string;
 }
@@ -55,9 +271,12 @@ function mainBtn(value) {
     console.log(value + " clicked!");
 
     document.querySelector("#주문화면").style.display = 'grid';
+    step2();
 }
 
 /* 주문화면 - 상단바 메뉴종류 버튼 클릭 */
+let topBarBtn_Clicked = {};
+let step2_clear = false;
 function topBarBtn(id) {
     document.getElementById("메인메뉴").style.display = 'none'
     document.getElementById("계절메뉴").style.display = 'none'
@@ -65,7 +284,14 @@ function topBarBtn(id) {
     document.getElementById("음료").style.display = 'none'
 
     document.getElementById(id).style.display = 'grid';
+    topBarBtn_Clicked[id] += 1;
+    
     console.log(id + " clicked!");
+
+    if ((step2_clear == false) && (Object.keys(topBarBtn_Clicked).length == 4)) {
+        step2_clear = true;
+        step3();
+    }
 }
 
 
@@ -104,6 +330,11 @@ function menuBtn(id, price) {
     
     console.log("cart length : " + orderList.length);
     printCart(orderList); 
+
+    // step3() 완료 여부 확인
+    if (orderList.length == 2) {
+        step4();
+    } 
 }
 
 /* 주문화면 - 장바구니 내역 출력 */
@@ -181,6 +412,8 @@ function paymentBtn() {
 
         document.querySelector("#결제화면").style.display = 'grid';
         printOrderList();
+
+        step5();
     }
 }
 
@@ -199,7 +432,7 @@ function printOrderList() {
     }
     console.log("i= " + i);
 
-    for ( ;i <5; i++) {
+    for ( ;i <3; i++) {
         document.getElementById("o_order_" + (i+1)).style.display= 'none';
         console.log((i+1) + " not display");
         document.getElementById("o_order_" + (i+1)).style.borderBottom = 'none';
@@ -228,6 +461,8 @@ function cardBtn() {
     
     document.getElementById("결제화면").style.pointerEvents = 'none';
     document.getElementById("결제overlay").style.display = 'block';
+
+    step6();
 }
 
 
@@ -246,4 +481,6 @@ function clearBtn() {
     document.querySelector("#결제화면").style.display = 'none';
 
     document.querySelector("#완료화면").style.display = 'grid';
+
+    step7();
 }
